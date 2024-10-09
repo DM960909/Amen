@@ -1,0 +1,12 @@
+.step {
+    width: 75px;
+    height: 40px;
+    display: inline-block;
+    background-color: lightgray;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.step.active {
+    background-color: green;  
+}

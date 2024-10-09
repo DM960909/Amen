@@ -1,51 +1,73 @@
+let playStep;  
+let isPlaying = false;  // tracks if sequende playing var
+let step = 0;  // Current step in the sequencer
+let bpm = 150; //bosh 
+// Initialize the sequencer array with 8 steps / 8th notes 
+let sequencer = {
+    kick: [0, 0, 0, 0, 0, 0, 0, 0],
+    snare: [0, 0, 0, 0, 0, 0, 0, 0],
+    hihat: [0, 0, 0, 0, 0, 0, 0, 0]
+};
+
 function playSound(sound) {
-    
-    let audio;
-
-    if (sound === 'kick') {
-
-        audio = new Audio("static/kick.wav");
-    }
-
-    if(audio) {
-        audio.play();
-    }
+    const audio = new Audio(`static/${sound}.wav`);
+    audio.play();
 }
 
+// Function to toggle the active state
+function toggleStep(sound, stepIndex) {
+    sequencer[sound][stepIndex] = sequencer[sound][stepIndex] === 1 ? 0 : 1;  // Toggle step state
 
+    const stepButton = document.querySelector(`.step[data-sound="${sound}"][data-step="${stepIndex}"]`);
+    stepButton.classList.toggle('active', sequencer[sound][stepIndex] === 1);
+}
 
+// Function to play the sequence
+function playSequence() {
+    if (isPlaying) return;  // Prevent starting multiple sequences
 
+    let interval = (60 / bpm) * 500;  // Set the timing based on bpm = bpm var 
+    isPlaying = true;  // Set isPlaying to true
 
-
-let drumPattern = [1,0,1,0,1,0,1,0];
-
-let bpm = 120;
-
-function playPattern() {
-    let interval = (60/bpm) * 500;
-    let step = 0;
-
-    const playStep = setInterval(() => {
-
-        let sound = drumPattern[step];
-        if (sound === 1) {
-            playSound('kick')
+    playStep = setInterval(() => {
+        // Play sounds based on the current step and the active state
+        if (sequencer.kick[step] === 1) {
+            playSound('kick');
         }
-        step++;
-
-        if (step >= drumPattern.length) {
-            clearInterval(playStep); 
-            
+        if (sequencer.snare[step] === 1) {
+            playSound('snare');
+        }
+        if (sequencer.hihat[step] === 1) {
+            playSound('hihat');
         }
 
+        step++;  // Move to the next step
+        if (step >= 8) {
+            step = 0;  // loop set when at end 
+        }
     }, interval);
 }
 
-document.querySelector("#play-button").addEventListener("click", playPattern);
+// stop the sequence
+function stopSequence() {
+    if (playStep) {
+        clearInterval(playStep);
+        playStep = null;  // Clear the interval reference
+    }
+    isPlaying = false;  // Set isPlaying to false
+}
 
-document.querySelectorAll(".drum-pad").forEach(button => {
-    button.addEventListener("click", function() {
-        const sound = this.getAttribute("data-sound");
-        playSound(sound);
+// Event listeners for buttons
+document.querySelector("#play-sequence-button").addEventListener("click", playSequence);
+document.querySelector("#stop-sequence-button").addEventListener("click", stopSequence);
+
+
+const stepButtons = document.querySelectorAll('.step');  // Get all step buttons
+
+stepButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const sound = button.getAttribute('data-sound');  // Get the sound type (kick, snare, hihat)
+        const stepIndex = button.getAttribute('data-step');  // Get the step index
+        toggleStep(sound, stepIndex);  // Toggle the step   
     });
 });
