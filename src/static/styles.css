@@ -1,12 +1,88 @@
-.step {
-    width: 75px;
-    height: 40px;
-    display: inline-block;
+/* Global reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full height body using flexbox to center content */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Container that holds all content */
+.container {
+    width: 90%; /* Make it wider for better space usage */
+    max-width: 1000px; /* Optional: Adjust max width */
+    text-align: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Flexbox for drum pads to align horizontally */
+.pad-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.drum-pad {
+    margin: 0 5px;
+    padding: 8px 15px;
     background-color: lightgray;
-    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Slightly smaller text */
+}
+
+.drum-pad:hover {
+    background-color: darkgray;
+}
+
+/* Sequencer step buttons styling */
+.sequencer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.step {
+    width: 30px;  /* Smaller step buttons */
+    height: 30px; /* Smaller step buttons */
+    margin: 0 5px; /* Reduce spacing between step buttons */
+    background-color: lightgray;
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease;
     cursor: pointer;
 }
 
 .step.active {
-    background-color: green;  
+    background-color: blue;
+}
+
+.step.current-step {
+    border: 2px solid orange;
+}
+
+/* Styling for play/stop buttons */
+#play-sequence-button, #stop-sequence-button {
+    margin: 5px;
+    padding: 10px 20px; /* Decrease button size */
+    background-color: lightblue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Slightly smaller button text */
+}
+
+#play-sequence-button:hover, #stop-sequence-button:hover {
+    background-color: deepskyblue;
 }
