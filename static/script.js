@@ -56,7 +56,7 @@ function loadSound(url) {
 
 // Load sound files and store them in bufferCache
 Promise.all([
-    loadSound('static/kick.wav').then(buffer => { bufferCache.Kick = buffer; }),
+    loadSound('static/kick.mp3').then(buffer => { bufferCache.Kick = buffer; }),
     loadSound('static/cymbal1.wav').then(buffer => { bufferCache.cymbal1 = buffer; }),
     loadSound('static/snare1.wav').then(buffer => { bufferCache.snare1 = buffer; }),
     loadSound('static/oHatSnareRoll.wav').then(buffer => { bufferCache.oHatSnareRoll = buffer; }),
