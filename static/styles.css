@@ -1,0 +1,216 @@
+/* Global reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full height body using flexbox to center content */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a; /* Dark background */
+    color: #e0e0e0; /* Light text color for readability */
+}
+
+/* Container that holds all content */
+.container {
+    width: 100%; /* Use more width for better space usage */
+    max-width: 1200px; /* Increase max width */
+    text-align: center;
+    background-color: #2b2b2b; /* Dark container background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow for depth */
+}
+
+/* Flexbox for drum pads to align horizontally */
+.pad-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.drum-pad {
+    margin: 0 5px;
+    padding: 10px 20px;
+    background-color: #444; /* Dark button background */
+    color: #e0e0e0; /* Light text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.drum-pad:hover {
+    background-color: #666; /* Slightly lighter on hover */
+}
+
+/* Sequencer step buttons styling */
+h2 {
+    margin-right: 10px; /* Space between the heading and the buttons */
+    flex: 0 0 150px; /* Set a fixed width for the h2 elements */
+    text-align: left; /* Align text to the left */
+}
+
+.sound-block {
+    display: flex; /* Use Flexbox for horizontal alignment */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 10px; /* Adds space between sound blocks */
+}
+
+/* Step row styling */
+.step-row {
+    display: flex; /* Use Flexbox for alignment */
+    justify-content: space-between; /* Space between buttons */
+    margin-bottom: 8px; /* Space between rows */
+    width: 100%; /* Ensure it fills the entire width */
+}
+
+/* Step button styling */
+.step {
+    flex: 1; /* Make buttons flexible to fill available space */
+    margin: 0 2px; /* Space between buttons */
+    height: 30px; /* Keep the height consistent */
+    background-color: #444; /* Button background color */
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    border-radius: 0.5px;
+}
+.step.active {
+    background-color: #1abc9c; /* Accent color for active steps */
+}
+
+.step.current-step {
+    border: 2px solid #ff9800; /* Orange border for current step */
+}
+
+/* Styling for play/stop buttons */
+.play-controls {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 10px; 
+    width: 100%; 
+    max-width: 1200px; 
+    overflow-x: auto; 
+    padding: 0 10px; 
+}
+
+.play-controls button {
+    margin: 0 5px; /* Space between control buttons */
+    padding: 8px 12px; /* Adjust padding for better fit */
+    background-color: #333; /* Same style as before */
+    color: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex: 1 1 auto; /* Allow buttons to grow and shrink but start at a minimum width */
+    min-width: 70px; /* Set a minimum width for the buttons */
+    max-width: 150px; /* Optional: limit maximum width of buttons */
+    text-align: center; /* Center text inside buttons */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis if text overflows */
+    white-space: nowrap; /* Prevent text from wrapping */
+    font-size: 0.9em; /* Adjust font size to fit */
+}
+
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .play-controls button {
+        flex: 1 1 100px; /* Ensure buttons have enough width but can shrink */
+        font-size: 0.9em; /* Adjust font size to fit */
+    }
+}
+
+
+
+.controls button:hover {
+    background-color: #555; /* Lighter shade on hover */
+}
+
+/* Equalizer controls with dark theme */
+#eq-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #222; /* Darker background for EQ controls */
+    border-radius: 10px;
+}
+
+#eq-controls label {
+    color: #999; /* Softer text color */
+    font-size: 0.9em;
+    margin-right: 5px;
+}
+
+#eq-controls input[type="range"] {
+    -webkit-appearance: none;
+    width: 140px; /* Adjusted width */
+    height: 6px;
+    background: #333; /* Darker track */
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+#eq-controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background-color: #1abc9c; /* Accent color */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#eq-controls input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background-color: #1abc9c;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .step-row {
+        justify-content: center; /* Ensure buttons stay centered */
+        overflow-x: auto; /* Allow horizontal scrolling if buttons overflow */
+    }
+
+    .step {
+        width: 24px; /* Adjust button size for smaller screens */
+        height: 16px; /* Adjust button size for smaller screens */
+    }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    h2 {
+        font-size: 1em; /* Adjust font size as needed */
+        margin-right: 5px; /* Reduce margin to save space */
+    }
+
+    .step {
+        width: 40px; /* Adjust width for larger buttons if needed */
+        height: 20px; /* Adjust height for larger buttons */
+        font-size: 0.8em; /* Smaller text inside buttons, if necessary */
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .sound-block h2 {
+        font-size: 14px; /* Smaller text size for landscape */
+    }
+    .step {
+        width: 30px; /* Larger buttons for better touch targets */
+        height: 15px; /* Larger buttons */
+    }
+}

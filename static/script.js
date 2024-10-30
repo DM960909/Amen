@@ -17,16 +17,35 @@ let sequencer = {
     snare3: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 };
 
-// EQ AREA
+
 let audioContext = new (window.AudioContext || window.webkitAudioContext)();
 let bufferCache = {};
 
-// Low EQ Setup
+// EQ Setup
 let lowEQ = audioContext.createBiquadFilter();
 lowEQ.type = 'lowshelf';
 lowEQ.frequency.setValueAtTime(300, audioContext.currentTime);
 lowEQ.gain.setValueAtTime(0, audioContext.currentTime);
 lowEQ.connect(audioContext.destination); // Connect to destination
+
+let midEQ = audioContext.createBiquadFilter();
+midEQ.type = 'peaking';
+midEQ.frequency.setValueAtTime(1000, audioContext.currentTime);
+midEQ.gain.setValueAtTime(0, audioContext.currentTime);
+midEQ.connect(audioContext.destination);
+
+let highEQ = audioContext.createBiquadFilter();
+highEQ.type = 'peaking';
+highEQ.frequency.setValueAtTime(5000, audioContext.currentTime);
+highEQ.gain.setValueAtTime(0, audioContext.currentTime);
+highEQ.connect(audioContext.destination);
+
+
+lowEQ.connect(midEQ);
+midEQ.connect(highEQ)
+highEQ.connect(audioContext.destination);
+
+// END OF EQ SETUP 
 
 // Function to load sounds and decode them
 function loadSound(url) {
@@ -62,6 +81,15 @@ function updateEQ() {
     const lowGainValue = parseFloat(document.getElementById('low-eq').value);
     lowEQ.gain.setValueAtTime(lowGainValue, audioContext.currentTime);
     console.log("Low EQ Gain:", lowGainValue); // Debug log
+
+    const midGainValue = parseFloat(document.getElementById('mid-eq').value);
+    midEQ.gain.setValueAtTime(midGainValue, audioContext.currentTime);
+    console.log("Mid EQ gain: ", midGainValue);
+
+    const highGainValue = parseFloat(document.getElementById('high-eq').value);
+    highEQ.gain.setValueAtTime(highGainValue, audioContext.currentTime);
+    console.log("High Eq gain: ", highGainValue);
+    
 }
 
 function toggleStep(sound, stepIndex) {
@@ -155,7 +183,8 @@ document.querySelector("#stop-sequence-button").addEventListener("click", stopSe
 document.getElementById('clear-sequence-button').addEventListener('click', clearSequence);
 document.querySelector("#increment-bpm-button").addEventListener("click", increaseBPM);
 document.getElementById('low-eq').addEventListener('input', updateEQ);
-
+document.getElementById('mid-eq').addEventListener('input', updateEQ);
+document.getElementById('high-eq').addEventListener('input', updateEQ);
 // Event listeners for toggling steps in the sequencer
 const stepButtons = document.querySelectorAll('.step');  // Get all step buttons
 stepButtons.forEach((button) => {

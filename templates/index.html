@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>AMEN Drum Machine</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
@@ -10,8 +10,8 @@
     <div class="container">
         <h1>AMEN Drum Machine</h1>
 
-        <div class="sequencer"></div>
-
+        
+        <div class="sound-block">
         <h2>Snare 3</h2>
         <div class="step-row">
             <button class="step" data-sound="snare3" data-step="0"></button>
@@ -31,7 +31,9 @@
             <button class="step" data-sound="snare3" data-step="14"></button>
             <button class="step" data-sound="snare3" data-step="15"></button>
         </div>
+        </div>
 
+        <div class="sound-block">
         <h2>Crash</h2>
         <div class="step-row">
             <button class="step" data-sound="crash" data-step="0"></button>
@@ -51,9 +53,10 @@
             <button class="step" data-sound="crash" data-step="14"></button>
             <button class="step" data-sound="crash" data-step="15"></button>
         </div>
+        </div>
 
-      
-        <h2>OHat3SnareRoll</h2>
+        <div class="sound-block">
+        <h2>OHat3SnrR</h2>
         <div class="step-row">
             <button class="step" data-sound="oHat3SnareR3" data-step="0"></button>
             <button class="step" data-sound="oHat3SnareR3" data-step="1"></button>
@@ -72,9 +75,10 @@
             <button class="step" data-sound="oHat3SnareR3" data-step="14"></button>
             <button class="step" data-sound="oHat3SnareR3" data-step="15"></button>
         </div>
+        </div>
 
-
-        <h2>OHat2Roll</h2>
+        <div class="sound-block">
+        <h2>OHat2R</h2>
         <div class="step-row">
             <button class="step" data-sound="oHat2SnareR2" data-step="0"></button>
             <button class="step" data-sound="oHat2SnareR2" data-step="1"></button>
@@ -93,7 +97,9 @@
             <button class="step" data-sound="oHat2SnareR2" data-step="14"></button>
             <button class="step" data-sound="oHat2SnareR2" data-step="15"></button>
         </div>
+        </div>
 
+        <div class="sound-block">
         <h2>Snare2</h2>
         <div class="step-row">
             <button class="step" data-sound="snare2" data-step="0"></button>
@@ -113,8 +119,9 @@
             <button class="step" data-sound="snare2" data-step="14"></button>
             <button class="step" data-sound="snare2" data-step="15"></button>
         </div>
+        </div>
 
-
+        <div class="sound-block">
         <h2>KickRoll</h2>
         <div class="step-row">
             <button class="step" data-sound="kickRoll" data-step="0"></button>
@@ -134,9 +141,10 @@
             <button class="step" data-sound="kickRoll" data-step="14"></button>
             <button class="step" data-sound="kickRoll" data-step="15"></button>
         </div>
+        </div>
 
-
-        <h2>OHatSnareRoll</h2>
+        <div class="sound-block">
+        <h2>OHatSnareR</h2>
         <div class="step-row">
             <button class="step" data-sound="oHatSnareRoll" data-step="0"></button>
             <button class="step" data-sound="oHatSnareRoll" data-step="1"></button>
@@ -155,7 +163,9 @@
             <button class="step" data-sound="oHatSnareRoll" data-step="14"></button>
             <button class="step" data-sound="oHatSnareRoll" data-step="15"></button>
         </div>
+        </div>
 
+        <div class="sound-block">
         <h2>Snare1</h2>
         <div class="step-row">
             <button class="step" data-sound="snare1" data-step="0"></button>
@@ -175,7 +185,9 @@
             <button class="step" data-sound="snare1" data-step="14"></button>
             <button class="step" data-sound="snare1" data-step="15"></button>
         </div>
+        </div>
 
+        <div class="sound-block">
         <h2>Cymbal1</h2>
         <div class="step-row">
             <button class="step" data-sound="cymbal1" data-step="0"></button>
@@ -195,7 +207,11 @@
             <button class="step" data-sound="cymbal1" data-step="14"></button>
             <button class="step" data-sound="cymbal1" data-step="15"></button>
         </div>
+        </div>
 
+
+
+        <div class="sound-block">
         <h2>Kick</h2>
         <div class="step-row">
             <button class="step" data-sound="Kick" data-step="0"></button>
@@ -215,17 +231,20 @@
             <button class="step" data-sound="Kick" data-step="14"></button>
             <button class="step" data-sound="Kick" data-step="15"></button>
         </div>
+        </div>
 
 
 
 
-
+        <div class = "play-controls">
             <button id="play-sequence-button">Play Sequence</button>
             <button id="stop-sequence-button">Stop Sequence</button>
             <button id="clear-sequence-button">Clear Sequence</button>
             <button id="increment-bpm-button">Increase BPM</button>
             <button id="decrement-bpm-buttom">Decrease BPM</button>
             <button id="stutter-button">Stutter loop</button>
+
+        </div>
 
             <div id="eq-controls">
                 <label for="low-eq">Low EQ</label>
