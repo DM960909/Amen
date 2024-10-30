@@ -54,6 +54,13 @@ function loadSound(url) {
         .then(data => audioContext.decodeAudioData(data));
 }
 
+function resumeAudioContext() {
+    if (audioContext.state === 'suspended') {
+        audioContext.resume().then(() => {
+            console.log('Audio context resumed');
+        });
+    }
+}
 // Load sound files and store them in bufferCache
 Promise.all([
     loadSound('static/kick.mp3').then(buffer => { bufferCache.Kick = buffer; }),
@@ -178,7 +185,10 @@ function updateBPMDisplay() {
 }
 
 // Event listeners for play and stop buttons
-document.querySelector("#play-sequence-button").addEventListener("click", playSequence);
+document.querySelector("#play-sequence-button").addEventListener("click", () => {
+    resumeAudioContext();
+    playSequence();
+});
 document.querySelector("#stop-sequence-button").addEventListener("click", stopSequence);
 document.getElementById('clear-sequence-button').addEventListener('click', clearSequence);
 document.querySelector("#increment-bpm-button").addEventListener("click", increaseBPM);
