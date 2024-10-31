@@ -106,8 +106,7 @@ h2 {
     margin: 0 2px; /* Space between buttons */
    /* Keep the height consistent */
    
-    cursor: pointer;
-    
+   
 }
 
 #major-mark {
@@ -245,6 +244,12 @@ h2 {
         overflow-x: auto; /* Allow horizontal scrolling if buttons overflow */
     }
 
+    .time-row {
+        justify-content: center; /* Ensure buttons stay centered */
+        overflow-x: auto;
+
+    }
+
     .step {
         width: 24px; /* Adjust button size for smaller screens */
         height: 16px; /* Adjust button size for smaller screens */
@@ -266,7 +271,7 @@ h2 {
     }
 
     .time-mark {
-        font-size: 0.4em; /* Smaller font size for time markers */
+        font-size: 0.2em; /* Smaller font size for time markers */
     }
 }
 
