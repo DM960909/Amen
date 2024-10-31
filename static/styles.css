@@ -7,7 +7,7 @@
 
 /* Full height body using flexbox to center content */
 body {
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +16,7 @@ body {
     font-style: normal;
     background-color: #1a1a1a; /* Dark background */
     color: #e0e0e0; /* Light text color for readability */
+    overflow-y: auto;
 }
 
 /* Container that holds all content */
