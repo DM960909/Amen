@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>AMEN Drum Machine</title>
-    <!--<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!--<link rel="stylesheet" href="static/styles.css">-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 
 </head>
 <body>
     <div class="container">
-        <h1>AMEN Drum Machine</h1>
-
-        
         <div class="sound-block">
         <h2>Snare 3</h2>
         <div class="step-row">
@@ -217,47 +218,92 @@
         <h2>Kick</h2>
         <div class="step-row">
             <button class="step" data-sound="Kick" data-step="0"></button>
+            
             <button class="step" data-sound="Kick" data-step="1"></button>
+            
             <button class="step" data-sound="Kick" data-step="2"></button>
+            
             <button class="step" data-sound="Kick" data-step="3"></button>
+            
             <button class="step" data-sound="Kick" data-step="4"></button>
+            
             <button class="step" data-sound="Kick" data-step="5"></button>
+            
             <button class="step" data-sound="Kick" data-step="6"></button>
+            
             <button class="step" data-sound="Kick" data-step="7"></button>
+            
             <button class="step" data-sound="Kick" data-step="8"></button>
+            
             <button class="step" data-sound="Kick" data-step="9"></button>
+            
             <button class="step" data-sound="Kick" data-step="10"></button>
+            
             <button class="step" data-sound="Kick" data-step="11"></button>
+            
             <button class="step" data-sound="Kick" data-step="12"></button>
+            
             <button class="step" data-sound="Kick" data-step="13"></button>
+            
             <button class="step" data-sound="Kick" data-step="14"></button>
+            
             <button class="step" data-sound="Kick" data-step="15"></button>
+            
         </div>
         </div>
+        <div class="time-block">
+            <h2></h2>
+            <div class="time-row">
+                <h5 class="time-mark" id="major-mark">1</h5>
+                <h5 class="time-mark">1.1.3</h5>
+                <h5 class="time-mark">1.2</h5>
+                <h5 class="time-mark">1.2.3</h5>
+                <h5 class="time-mark">1.3</h5>
+                <h5 class="time-mark">1.3.3</h5>
+                <h5 class="time-mark">1.4</h5>
+                <h5 class="time-mark">1.4.3</h5>
+                <h5 class="time-mark" id="major-mark">2</h5>
+                <h5 class="time-mark">2.1.3</h5>
+                <h5 class="time-mark">2.2</h5>
+                <h5 class="time-mark">2.2.3</h5>
+                <h5 class="time-mark">2.3</h5>
+                <h5 class="time-mark">2.3.3</h5>
+                <h5 class="time-mark">2.4</h5>
+                <h5 class="time-mark">2.4.3</h5>
+                
+            </div>
+        </div>
+        
+        
 
 
 
 
         <div class = "play-controls">
-            <button id="play-sequence-button">Play Sequence</button>
-            <button id="stop-sequence-button">Stop Sequence</button>
-            <button id="clear-sequence-button">Clear Sequence</button>
-            <button id="increment-bpm-button">Increase BPM</button>
-            <button id="decrement-bpm-buttom">Decrease BPM</button>
-            <button id="stutter-button">Stutter loop</button>
+            <button id="play-sequence-button">Play</button>
+            <button id="stop-sequence-button">Stop</button>
+            <button id="clear-sequence-button">Clear</button>
+            <button id="increment-bpm-button">BPM +</button>
+            <button id="decrement-bpm-buttom">BPM - </button>
+
 
         </div>
 
-            <div id="eq-controls">
+        <div id="eq-controls">
+            <div class="eq-slider-container">
                 <label for="low-eq">Low EQ</label>
                 <input type="range" id="low-eq" min="-12" max="12" value="0" step="1">
-            
+            </div>
+            <div class="eq-slider-container">
                 <label for="mid-eq">Mid EQ</label>
                 <input type="range" id="mid-eq" min="-12" max="12" value="0" step="1">
-            
+            </div>
+            <div class="eq-slider-container">
                 <label for="high-eq">High EQ</label>
                 <input type="range" id="high-eq" min="-12" max="12" value="0" step="1">
             </div>
+        </div>
+        
             
             
 
@@ -266,7 +312,7 @@
 
 
         
-    <!--<script src="{{ url_for('static', filename='script.js') }}"></script> -->
-    <script src="static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <!--<script src="static/script.js"></script>-->
 </body>
 </html>

@@ -11,7 +11,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
+    font-family: "Audiowide", sans-serif;
+    font-weight: 300;
+    font-style: normal;
     background-color: #1a1a1a; /* Dark background */
     color: #e0e0e0; /* Light text color for readability */
 }
@@ -57,17 +59,20 @@ h2 {
     text-align: left; /* Align text to the left */
 }
 
+
+
 .sound-block {
     display: flex; /* Use Flexbox for horizontal alignment */
     align-items: center; /* Center items vertically */
     margin-bottom: 10px; /* Adds space between sound blocks */
+    
 }
 
 /* Step row styling */
 .step-row {
     display: flex; /* Use Flexbox for alignment */
     justify-content: space-between; /* Space between buttons */
-    margin-bottom: 8px; /* Space between rows */
+    margin-bottom: 4px; /* Space between rows */
     width: 100%; /* Ensure it fills the entire width */
 }
 
@@ -81,6 +86,32 @@ h2 {
     transition: background-color 0.2s ease;
     cursor: pointer;
     border-radius: 0.5px;
+}
+.time-block {
+    display: flex; /* Use Flexbox for horizontal alignment */
+    align-items: center; /* Center items vertically */
+   
+}
+.time-row {
+    display: flex; /* Use Flexbox for alignment */
+    justify-content: space-between; /* Space between buttons */
+    margin-bottom: 4px; /* Space between rows */
+    width: 100%; /* Ensure it fills the entire width */
+}
+
+/* Time marker styling */
+.time-mark {
+    flex: 1; /* Make buttons flexible to fill available space */
+    margin: 0 2px; /* Space between buttons */
+   /* Keep the height consistent */
+   
+    cursor: pointer;
+    
+}
+
+#major-mark {
+    font-weight: bold;
+    color: #1abc9c;
 }
 .step.active {
     background-color: #1abc9c; /* Accent color for active steps */
@@ -119,6 +150,9 @@ h2 {
     text-overflow: ellipsis; /* Show ellipsis if text overflows */
     white-space: nowrap; /* Prevent text from wrapping */
     font-size: 0.9em; /* Adjust font size to fit */
+    font-family: "Audiowide", sans-serif;
+    font-weight: 300;
+    font-style: normal;
 }
 
 
@@ -142,30 +176,39 @@ h2 {
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    background-color: #222; /* Darker background for EQ controls */
+    background-color: #222;
     border-radius: 10px;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    gap: 10px; /* Space between controls */
+}
+
+.eq-slider-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1 1 30%; /* Responsive flex-basis for equal spacing */
 }
 
 #eq-controls label {
-    color: #999; /* Softer text color */
+    color: #999;
     font-size: 0.9em;
-    margin-right: 5px;
+    white-space: nowrap; /* Prevents text from wrapping */
 }
 
 #eq-controls input[type="range"] {
     -webkit-appearance: none;
-    width: 140px; /* Adjusted width */
+    width: 100%;
+    max-width: 140px;
     height: 6px;
-    background: #333; /* Darker track */
+    background: #333;
     border-radius: 5px;
-    margin-right: 20px;
 }
 
 #eq-controls input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 14px;
     height: 14px;
-    background-color: #1abc9c; /* Accent color */
+    background-color: #1abc9c;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -176,6 +219,22 @@ h2 {
     background-color: #1abc9c;
     border-radius: 50%;
     cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #eq-controls {
+        flex-direction: column; /* Stack controls vertically */
+        align-items: center;
+    }
+
+    .eq-slider-container {
+        flex-basis: 100%; /* Full width for each control */
+    }
+
+    #eq-controls input[type="range"] {
+        max-width: 80%; /* Smaller range for sliders */
+    }
 }
 
 /* Media queries for responsiveness */
@@ -189,6 +248,7 @@ h2 {
         width: 24px; /* Adjust button size for smaller screens */
         height: 16px; /* Adjust button size for smaller screens */
     }
+    
 }
 
 /* Media query for smaller screens */
@@ -203,6 +263,10 @@ h2 {
         height: 20px; /* Adjust height for larger buttons */
         font-size: 0.8em; /* Smaller text inside buttons, if necessary */
     }
+
+    .time-mark {
+        font-size: 0.4em; /* Smaller font size for time markers */
+    }
 }
 
 @media only screen and (orientation: landscape) {
@@ -212,5 +276,9 @@ h2 {
     .step {
         width: 30px; /* Larger buttons for better touch targets */
         height: 15px; /* Larger buttons */
+    }
+    
+    .time-mark {
+        font-size: 0.8em; /* Adjust font size for landscape orientation */
     }
 }
